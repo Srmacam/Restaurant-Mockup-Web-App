@@ -1,4 +1,4 @@
-# Restaurant Mockup
+# Restaurant Mockup Web App
 React-based local web application for a hypothetical restaurant. Allows users to place orders, check the progress of their orders, cancel or confirm that they have been receieved, and calculates their total bill for the session.
 
 # Starter Kit for [Building Applications in React and Redux in ES6](http://www.pluralsight.com/author/cory-house) on Pluralsight
