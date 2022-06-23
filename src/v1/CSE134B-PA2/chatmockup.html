@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"> <!-- solely used for font -->
+<title> Main Menu - Diner Duo </title>
+<style> 
+body{font-family: "Lato", sans-serif;}
+
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+    width: 50%;
+    float: left;
+}
+
+.customer {
+    border-color: #ccc;
+    background-color: #ddd;
+    float: right;
+}
+
+.container > p { 
+    text-align: center;
+    margin-left: 20px;
+    font-size: 150%;
+    word-wrap: break-word;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.chat {
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  background-color: #333;
+}
+
+
+.text {
+  border-width: 3px;
+  font-size: 16pt;
+  position: relative;
+  float: left;
+  left: 40%;
+}
+
+.reset {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  float: left;
+  margin: auto;
+  margin-left: 5px;
+  font-size: 16pt;
+  left: 40%;
+  background-color: #333;
+  border: none;
+  top: 2px;
+}
+
+.reset:hover {
+  color:rgb(173, 226, 173);
+}
+
+.reset:active{
+  color:rgb(236, 222, 222);
+  color:rgba(236, 222, 222, 0.486);
+}
+</style>
+
+
+<script>
+
+  var latestMsg = "";
+  var test = false;
+
+  function message() {
+    let msg = document.getElementById("msg").value;
+    if (msg === "") return;
+    document.getElementById("msg").value = "";
+    let div;
+    if (!test) {div = document.getElementById("custChat").cloneNode(true); test=true;}
+    else {div = document.getElementById("servChat").cloneNode(true); test=false};
+    div.style.display = 'block';
+    div.children[0].innerHTML = msg;
+    document.getElementById("chatContainer").appendChild(div);
+  }
+
+</script>
+
+<body>
+  <div id="chatContainer">
+    <div class="container" style=display:none id=servChat>
+      <p></p>
+    </div>
+
+    <div class="container customer" id=custChat style=display:none>
+      <p></p>
+    </div>
+  
+  <div class="chat">
+    <form>
+      <input class="text" type="text" id="msg" placeholder="Type your message here"
+              onkeydown = "if (event.keyCode==13) { message(); return false; }">
+      <a class=reset href=javascript:void(0) onclick=message() id="send"> &#8594; </a>
+    </form>
+  </div>
+</div>
+
+  <a href="ChefPage.html">OPEN CHEF PAGE HERE</a>
+  <br> <br> <a href="FirstPage.html">OPEN WELCOME PAGE HERE</a>
+  <br> <br> <a href="ServerPage.html">OPEN SERVER PAGE HERE</a>
+  
+</body>
+</html>

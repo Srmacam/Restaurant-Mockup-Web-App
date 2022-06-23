@@ -1,0 +1,181 @@
+<!DOCTYPE html>   
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content = "width=device-width,initial-scale=1.0:">
+        <link rel="stylesheet" type="text/css" href="./css/menuBar.css">
+        <link rel="stylesheet" type="text/css" href="./css/billpage.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"> <!-- solely used for font -->
+        <title>Bill</title>
+        <script> 
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+            
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        
+        var subtotal = 0;
+        var total = 0;
+        var unparsed = null;
+        var sessID;
+        var countedOrders = [];
+
+        // From https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
+        function moneyFormat(cost) { return "$" + parseFloat(Math.round(cost * 100) / 100).toFixed(2); }
+
+
+        window.onload = function() {
+            var orders = [];
+            unparsed = localStorage.getItem('orders');
+            if (unparsed !== null) {
+                sessID = sessionStorage.getItem("sessID");
+                if (!sessID) {
+                    alert("BUG with 'sessID'"); 
+                    return;
+                }
+                sessID = JSON.parse(sessID);
+                orders = JSON.parse(unparsed)[sessID];
+            }
+            else {
+                return;
+            }
+            
+            if (orders.length > 0) {
+                document.getElementById("itemRow").style.display = 'none';
+                document.getElementById("countRow").style.display = 'none';
+            }
+
+            // Populate countedOrders to get the counted format
+            for (i = 0; i < orders.length; i++) {
+                var j = 0;
+                subtotal += orders[i].price;
+
+                // Using linear search because lazy
+                for (; j < countedOrders.length; j++) {
+                    if (countedOrders[j].name === orders[i].name) {
+                        countedOrders[j].count++;
+                        break;
+                    }
+                }
+
+                // Not found, push it in
+                if (j === countedOrders.length)
+                    countedOrders.push({name: orders[i].name, count: 1, price: orders[i].price});
+            }
+            total = subtotal;
+
+            // Set HTML using formatted orders
+            for (ii = 0; ii < countedOrders.length; ii++) {
+                let item = document.getElementById("itemRow").cloneNode(true);
+                let quantity = document.getElementById("countRow").cloneNode(true);
+                item.style.display = 'block';
+                quantity.style.display = 'block';
+                item.children[0].innerHTML = countedOrders[ii].name;
+                quantity.children[0].innerHTML = "x" + countedOrders[ii].count;
+                document.getElementById("item").appendChild(item);
+                document.getElementById("count").appendChild(quantity);
+            }
+
+            document.getElementById("subtotal").innerHTML = "<h1>" + moneyFormat(subtotal) + "</h1>";
+            document.getElementById("final").innerHTML = "Total: " + moneyFormat(total);
+        }
+
+        function tip(percent) { 
+            total = subtotal + subtotal*percent;
+            document.getElementById("final").innerHTML = "Total: " + moneyFormat(total);
+        }
+
+
+        // TODO: 'tables' is not handled. Fix that sometime please.
+        function paid() {
+            if (countedOrders.length <= 0) {
+                alert("You haven't bought anything yet.");
+                return;
+            }
+            var allOrders = JSON.parse(unparsed);
+            //var unpTables = localStorage.getItem('tables');
+            //var tables;
+            //if (unpTables !== null) { tables = JSON.parse(unpTables); }
+            
+            //tables[sessID] = false;
+            allOrders[sessID] = [];
+            //localStorage.setItem('tables', JSON.stringify(tables));
+            localStorage.setItem('orders', JSON.stringify(allOrders));
+            sessionStorage.clear();
+            
+            window.location = "FirstPage.html";
+        }
+
+        </script>
+      </head>
+      <body>
+
+        <div class="topnav">
+            <a class="dropdown" href="javascript:void(0)" onclick="openNav()">&#9776;</a>
+        </div>
+
+        <div class="table">
+
+        <div class="row">
+            <div class="column left">
+                    <h2>Menu Item</h2>
+            </div>
+            <div class ="column middle">
+                    <h2>Quantity</h2>
+            </div>
+            <div class="column right">
+                    <h2>Subtotal</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column left" id=item>
+                <div class="row" id=itemRow style=display:hidden>
+                    <h3></h3>
+                </div>                 
+            </div>
+
+            <div class ="column middle" id=count>
+                <div class="row" id=countRow style=display:hidden>
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="column right">
+                <div class ="row sub1" id=subtotal>
+                    <h1>$0.00</h1>    
+                </div>
+                <div class ="row sub2">
+                    <button class=tip onclick=tip(0.10)>Tip 10%</button>
+                    <button class=tip onclick=tip(0.15)>Tip 15%</button>
+                    <button class=tip onclick=tip(0.20)>Tip 20%</button>
+                    <button class=tip onclick=tip(0)>No Tip </button>
+                    <h3 id=final>Total:$0.00</h3>
+                </div>
+                <div class ="row sub3">
+                    <button class=cash onclick=paid()>CASH</button>
+                    <button class=card onclick=paid()>CARD</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- chatbar -->
+        <div class="chatbar">
+            <a href="chatmockup.html">Chat</a>
+        </div>
+
+        <!-- sidenav (code from W3Schools) -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="SecondPage.html">Home</a>
+            <a href="foodmenu.html">Menu</a>
+            <a href="ProgressPage.html">Progress</a>
+            <a href="BillPage.html">Bill</a>
+        </div>
+  
+      </body>
+    </html>
+    

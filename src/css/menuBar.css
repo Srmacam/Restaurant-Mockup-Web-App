@@ -1,0 +1,69 @@
+.topnav {
+  top: 0;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  border-style: solid;
+  border-width: thin;
+  overflow: hidden;
+}
+
+.dropdown {
+float:left;
+display: block;
+text-align: center;
+padding: 14px 25px;
+text-decoration: none;
+font-size: 20px;
+color: rgb(255, 255, 255);
+background-color: #4CAF50;
+}
+
+.chatbar {
+overflow: hidden;
+background-color: #333;
+position: fixed;
+height: 35px;
+bottom: 0;
+width: 100%;
+}
+
+.chatbar > a {
+text-decoration: none;
+float: right;
+color: white;
+font-size: 125%;
+width: 225px;
+height: 100%;
+vertical-align: middle;
+line-height: 35px; 
+background-color: gray;
+margin-right: 15vw;
+position: relative;
+text-align: center;
+}
+
+.chatbar > a:active {
+  background-color: gray;
+  box-shadow: 0 5px #666;
+}
+
+.chatbar > a:hover {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.527);
+}
+
+/* put this HTML code in the page
+
+<!-- topnav -->
+<div class=menuButton>
+  <a id=dropdown href="SecondPage.html">&#9776;</a>
+</div>
+
+<!-- chatbar -->
+<div class="chatbar">
+  <a href="chatmockup.html">Chat (0)</a>
+</div>
+
+*/

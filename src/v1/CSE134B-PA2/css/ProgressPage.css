@@ -1,0 +1,79 @@
+*{ box-sizing: border-box; }
+html, body { height: 90%; margin: 0; }
+
+body {
+    background-color: #ffffff;
+    background-size: cover;
+    background-image: url('../images/Cooking.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom right; 
+  }
+
+.table {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.89);
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    color: rgb(0, 0, 0);
+    bottom: 10px;
+    border-style: double;
+    border-width: thick;
+    display: table;
+    width: 90%;
+    vertical-align: middle;
+    overflow: scroll;
+}
+
+.row {
+    display: table-row;
+    text-align: center;
+}
+
+.row > div {
+    float: left;
+    width: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(12, 6, 6);
+    border-bottom-width: 0;
+    padding: 5px;
+}
+
+.top {
+    display: table-header-group;
+    background-color: rgb(128, 128, 128);
+    background-color: rgba(128, 128, 128, 0.712);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.top > div { border-bottom-width: thick; }
+
+.row:after {
+    content:"";
+    clear: both;
+}
+
+.headers {
+    font-weight: bold;
+    font-size: 6vh;
+    color: white;
+}
+
+button { font-size: 25px; }
+button:active { background-color: #DCDCDC; transform: translateY(4px); }
+.prepping { color: rgb(189, 125, 6);}
+.inProgress {  color: rgb(133, 124, 4); }
+.done { color: rgb(9, 109, 101); }
+.delivered { color: rgb(21, 92, 21); }
+.cancel { color: white; background-color: rgb(197, 7, 7)}
+.pickup {color: white; background-color: green;}
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .headers{font-size:20px;}
+    h2{font-size: 15px;}
+    button{ font-size: 15px;}
+}

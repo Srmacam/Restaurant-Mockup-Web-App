@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width" />
+<link type=text/css rel="stylesheet" href="css/ProgressPage.css">
+<link type=text/css rel="stylesheet" href="css/menuBar.css">
+<link type=text/css rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato"> <!-- solely used for font -->
+<title> Main Menu - Diner Duo </title>
+<style> body{font-family: "Lato", sans-serif;} </style>
+<script>
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+var orders = [];
+var removed = 0;
+var sessID = null;
+
+window.onload = function() {
+    let unparsed = localStorage.getItem('orders');
+    if (unparsed !== null) {
+        sessID = sessionStorage.getItem("sessID");
+        if (!sessID) {
+            alert("BUG with 'sessID'"); 
+            return;
+        }
+        orders = JSON.parse(unparsed)[JSON.parse(sessID)];
+    }
+
+    
+    for (i = 0; i < orders.length; i++) {
+        let divID, statHTML;
+        let status = orders[i].stat;
+        switch(status) {
+            case 0:
+                divID = "stat0";
+                statHTML = "Preparing your order <button class=cancel onclick=cancelOrder("+i+")> &#128711; </button>";
+                break;
+            case 1:
+                divID = "stat1";
+                statHTML = "Cooking your order";
+                break;
+            case 2:
+                divID = "stat2";
+                statHTML = "Delivering your order";
+                break;
+            case 3:
+                divID = "stat3";
+                statHTML = "Delievered (Call for plate pickup?) <button class=pickup onclick=clean("+i+")> &#10004; </button> ";
+                break;
+            case 4:
+                return;
+            default:
+                alert("Invalid status value. FIX NOW PLS");
+                return;
+        }
+        let newID = divID+"."+i;
+        let div = document.getElementById(divID).cloneNode(true);
+        div.style.display = 'block';
+        div.children[0].children[0].innerHTML = orders[i].name;
+        div.children[1].children[0].innerHTML = statHTML;
+        document.getElementById("progTable").appendChild(div);
+
+    }
+}
+
+function cancelOrder(id) {
+    index = 5+id; // 5 templates, start adding elements after them 
+    parent = document.getElementById("progTable");
+    parent.children[5+id].style.display = "none";
+    orders.splice(id, 1);
+    for (i = index; i < parent.children.length; i++) {
+        let idxDiv = parent.children[i].children[1].children[0];
+            // Only change HTML of elements with buttons (i.e. prepping/delivered)
+            if (idxDiv.className === "prepping")
+                idxDiv.innerHTML = "Preparing your order <button class=cancel onclick=cancelOrder("+(i-5)+")> &#128711; </button>";
+            else if (idxDiv.className === "delivered")
+                idxDiv.innerHTML = "Delievered (Call for plate pickup?) <button class=pickup onclick=clean("+(i-5)+")> &#10004; </button> ";
+    }
+    
+    let allOrders = JSON.parse(localStorage.getItem('orders'));
+    allOrders[sessID] = orders;
+    localStorage.setItem('orders', JSON.stringify(allOrders));
+}
+
+function clean(id) {
+    index = 5+id; // 5 templates, start adding elements after them 
+    parent = document.getElementById("progTable");
+    parent.children[5+id].style.display = "none";
+    
+    let allOrders = JSON.parse(localStorage.getItem('orders'));
+    allOrders[sessID] = orders;
+    localStorage.setItem('orders', JSON.stringify(allOrders));
+}
+
+</script>
+
+<body>
+<div>
+  <div class=topnav>
+        <a class=dropdown href="javascript:void(0)" onclick="openNav()">&#9776;</a>
+  </div>
+
+  <div class=table id=progTable>
+    <div class="row top">
+      <div class=left>
+        <h1 class=headers> Order </h1>
+      </div>
+      <div class=right>
+        <h1 class=headers> Status </h1>
+      </div>
+    </div>
+    <div class=row id=stat0 style=display:none;>
+        <div class=left>
+            <h2 class=prepping></h2>
+        </div>
+        <div class=right>
+            <h2 class=prepping>
+                <button class=cancel onclick=cancelOrder()> &#128711; </button> 
+            </h2>
+        </div>
+    </div>
+    <div class=row id=stat1 style=display:none;>
+        <div class=left>
+            <h2 class=inProgress></h2>
+        </div>
+        <div class=right>
+            <h2 class=inProgress></h2>
+        </div>
+    </div>
+    <div class=row id=stat2 style=display:none;>
+        <div class=left>
+            <h2 class=done></h2>
+        </div>
+        <div class=right>
+            <h2 class=done></h2>
+        </div>
+      </div>
+    <div class=row id=stat3 style=display:none;>
+        <div class=left>
+            <h2 class=delivered></h2>
+        </div>
+        <div class=right>
+            <h2 class=delivered>
+              <button class=pickup onclick=clean()> &#10004; </button> 
+            </h2>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="chatbar">
+    <a href="chatmockup.html">Chat</a>
+</div>
+<!-- sidenav (code from W3Schools) -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="SecondPage.html">Home</a>
+    <a href="foodmenu.html">Menu</a>
+    <a href="ProgressPage.html">Progress</a>
+    <a href="BillPage.html">Bill</a>
+</div>
+</body>
+</html>

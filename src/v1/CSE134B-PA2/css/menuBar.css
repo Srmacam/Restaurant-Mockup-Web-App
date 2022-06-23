@@ -1,0 +1,131 @@
+.topnav {
+  top: 0;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  border-style: solid;
+  border-width: thin;
+  overflow: hidden;
+}
+
+.dropdown {
+float:left;
+display: block;
+text-align: center;
+padding: 14px 25px;
+text-decoration: none;
+font-size: 20px;
+color: rgb(255, 255, 255);
+background-color: #4CAF50;
+}
+
+.chatbar {
+overflow: hidden;
+background-color: #333;
+position: fixed;
+height: 35px;
+bottom: 0;
+width: 100%;
+}
+
+.chatbar > a {
+text-decoration: none;
+float: right;
+color: white;
+font-size: 125%;
+width: 225px;
+height: 100%;
+vertical-align: middle;
+line-height: 35px; 
+background-color: gray;
+margin-right: 15vw;
+position: relative;
+text-align: center;
+}
+
+.chatbar > a:active {
+  background-color: gray;
+  box-shadow: 0 5px #666;
+}
+
+.chatbar > a:hover {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.527);
+}
+
+/* Sidenav CSS taken from W3Schools */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+
+/* put this HTML code in the page
+
+<!-- topnav  !!! CHANGED FROM ORIGINAL CODE !!! -->
+<div class=topNav>
+  <a class=dropdown href="javascript:void(0)" onclick="openNav()">&#9776;</a>
+</div>
+
+<!-- chatbar -->
+<div class="chatbar">
+  <a href="chatmockup.html">Chat (0)</a>
+</div>
+
+
+!!! NEW CODE BELOW !!!
+(Don't forget to change topnav too)
+
+<!-- sidenav (code from W3Schools) -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="SecondPage.html">Home</a>
+  <a href="foodmenu.html">Menu</a>
+  <a href="ProgressPage.html">Progress</a>
+  <a href="BillPage.html">Bill</a>
+</div>
+
+
+Put this JS code in the <script> </script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+*/

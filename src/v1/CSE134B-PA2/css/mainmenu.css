@@ -1,0 +1,59 @@
+html, body {margin: 0; height: 90%;}
+
+body {
+  background-color: #dcdcdc;
+	background-size: cover;
+	background-image: url('../images/table.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: bottom right; 
+}
+  
+a {
+  text-decoration: none;
+}
+
+.buttons {
+  margin: 2% 0 0 0;
+  position: relative;
+}
+
+.buttons > a {
+  background-color: #DCDCDC;
+	color: black;
+  max-width: 25%;
+	border: none;
+	text-align: center;
+	font-size: 150%;
+	padding: 20px 20%;
+	border-radius: 30px;
+	box-shadow: 0 9px #999;
+  margin: auto;
+  margin-top: 80px;
+  display: block; 
+  margin-bottom: 12%;
+}
+  
+.buttons > a:hover {
+  background-color: white;
+}
+
+.buttons > a:active {
+  background-color: #DCDCDC;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+@media (orientation: landscape) {
+  .buttons > a{margin-bottom: 3%;}
+  .chatbar > a{width:275px}   
+}
+
+@media (max-width: 500px) {
+  .chatbar > a{width: 200px;}
+  .buttons > a {
+    max-width: 20%;
+    font-size: 125%;
+    padding: 15px 30%;
+  }
+}

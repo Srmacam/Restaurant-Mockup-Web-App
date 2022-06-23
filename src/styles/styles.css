@@ -1,0 +1,709 @@
+/* Styles */
+/* not everything has border-box */
+/* mainmenu and progresspage have 90% height */
+html, body, #app, #app>div {
+    height: 100%;
+    margin: 0 auto;
+}
+/*-------custChat page ----------*/
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+    width: 50%;
+    float: left;
+}
+
+.customer {
+    border-color: #ccc;
+    background-color: #ddd;
+    float: right;
+}
+
+.container > p { 
+    text-align: center;
+    margin-left: 20px;
+    font-size: 150%;
+    word-wrap: break-word;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.chat {
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    background-color: #333;
+}
+
+.text {
+    border-width: 3px;
+    font-size: 16pt;
+    position: relative;
+    float: left;
+    left: 40%;
+}
+
+.reset {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    float: left;
+    margin: auto;
+    margin-left: 5px;
+    font-size: 16pt;
+    left: 40%;
+    background-color: #333;
+    border: none;
+    top: 2px;
+  }
+  
+  .reset:hover {
+    color:rgb(173, 226, 173);
+  }
+  
+  .reset:active{
+    color:rgb(236, 222, 222);
+    color:rgba(236, 222, 222, 0.486);
+  }
+
+
+/*---------- Welcome Page ----------------- */
+/* changed wrapper to welWrapper */
+.welWrapper{
+    display: grid;
+    height: 100%;
+    width: 100%;
+}
+
+.welcome{
+    display: grid;
+    background-image: url('../images/mtable.jpg');
+    background-size: cover;
+    height: 100%;
+    width: 100%
+}
+/* changed button class name */
+.welButton{
+    background-color: rgb(74, 197, 74);
+    display:grid;
+    position: fixed;
+    bottom: 0;
+    height: 20%;
+    width: 100%;
+    border-style: solid;
+    border-width: thin;
+}
+.message{
+    text-align: center;
+    color:rgb(255, 255, 255);
+    text-shadow: 2px 2px #ff0000;
+    font-size: 10vw;
+    font-family:'Roboto',sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.button1{
+    display: grid;
+    font-family:'Roboto',sans-serif;
+    border-color: black;
+    border-width: thick;
+    font-size: 10vw;
+    margin: auto;
+    text-transform:uppercase;
+    text-shadow: 2px 2px #ff0000;
+    font-weight:400;
+    color:rgb(255, 255, 255);
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.button1:hover{
+    color: gainsboro;
+    border-color: #DDDDDD;
+}
+
+.button1:active{
+    color:rgb(0, 0, 0);
+    border-color: #BBBBBB;
+}
+
+
+/* ---------------main menu -------------*/
+.homeBG {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/table.jpg');
+    background-size: cover;
+    top: 0;
+}
+
+.homeButt {
+    margin: 2% 0 0 0;
+    position: relative;
+}
+
+.homeButt > a {
+    background-color: #DCDCDC;
+    color: black;
+    max-width: 50%;
+    border: none;
+    text-align: center;
+    font-size: 150%;
+    padding: 20px 0 20px 0;
+    border-radius: 30px;
+    box-shadow: 0 9px #999;
+    margin: auto;
+    margin-top: 80px;
+    display: block; 
+    margin-bottom: 12%;
+}
+
+.homeButt > a:hover {
+    background-color: white;
+    text-decoration: none;
+}
+
+.homeButt > a:active {
+    background-color: #DCDCDC;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    text-decoration: none;
+}
+
+.homeButt > a:visited, .button > a:focus {
+    text-decoration: none;
+}
+
+/* ---------------- menuBar -----------*/
+.topnav {
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 100%;
+    position: fixed;
+    z-index: 998;
+    border-style: solid;
+    border-width: thin;
+    overflow: hidden;
+}
+  
+.dropdown {
+    float:left;
+    display: block;
+    text-align: center;
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: #4CAF50;
+}
+
+.dropdown:hover, .dropdown:active, .dropdown:visited, .dropdown:focus{ 
+    text-decoration: none; 
+}
+
+.chatbar {
+    left: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    height: 35px;
+    bottom: 0;
+    width: 100%;
+}
+
+.chatbar > a {
+    text-decoration: none;
+    float: right;
+    color: white;
+    font-size: 125%;
+    width: 225px;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 35px; 
+    background-color: gray;
+    margin-right: 15vw;
+    position: relative;
+    text-align: center;
+}
+    
+.chatbar > a:active {
+    background-color: gray;
+    box-shadow: 0 5px #666;
+}
+    
+.chatbar > a:hover {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.527);
+}
+
+/* Sidenav CSS taken from W3Schools */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    text-decoration: none;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+    text-decoration: none;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+.sidenav a:hover, .sidenav a:active, .sidenav a:visited, .sidenav a:focus{ 
+    text-decoration: none; 
+}
+
+/* ------------ food menu --------------*/
+.menuBG  {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/table.jpg');
+    background-size: cover;
+}
+
+.table {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(0, 0, 0);
+    bottom: 10px;
+    display: table;
+    width: 1050px;
+    height: auto;
+    position: relative;
+    overflow: scroll;
+}
+
+.row {
+    display: table-row;
+    text-align: center;
+}
+
+.row > div {
+    float: left;
+    padding: 5px;
+}
+
+.left {
+    background-color: rgb(231, 241, 255);
+    border-style: solid;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    width: 150px;
+    height: 100%;
+}
+
+.top {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.row:after {
+    content:"";
+    clear: both;
+}
+
+.headers {
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+}
+
+.category {
+    text-align: center;
+    vertical-align: middle;
+    border-top-width: thin;
+    border-style: solid;
+    background-color: rgb(214, 214, 214);
+}
+.category:hover { background-color: rgb(255, 255, 255); }
+.category:active { background-color: rgb(214, 214, 214); transform: translateY(4px); }
+
+.column {
+    width: 225px;
+    height: 225px;
+    margin: 0 0 25px 25px;
+}
+
+.food {
+    border-style: double;
+    border-width: thick;
+    color: rgb(255, 0, 0);
+    border-color: rgb(0, 0, 0);
+}
+
+.food > div {
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background-color: rgb(226, 226, 226);
+    border-color: rgb(73, 73, 73);
+}
+
+.img {
+    background-image: url('../images/order3.jpg');
+    background-size: cover;
+    height: 125px;
+    background-position: center;
+}
+
+.out {
+    background-image: url('../images/sold_out.png');
+    background-size: 175px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.entree { background-image: url('../images/entree.jpg'); }
+.burger { background-image: url('../images/order3.jpg'); }
+.side { background-image: url('../images/side.jpg'); }
+.drink { background-image: url('../images/drink.jpg'); }
+.dessert { background-image: url('../images/dessert.jpg'); }
+
+.bar {
+    overflow: hidden;
+    border-bottom-width: 0;
+}
+
+.bar > div { float: left; margin: 2px 0 1.5px 10px;}
+.bar div:after { clear: both; }
+.bar button:after { clear: both; }
+
+.num { border-style: solid; border-width: 1.5px; padding: 1px 1px 1px 1px; }
+.plus {color: green; background: none; border: none; font-size: 1.2em; float: left; padding-top: 3px;}
+.minus {color: red; background: none; border: none; font-size: 1.2em; float: left; padding-top: 2px; margin-left: 5px;}
+.price {font-size: 20px; vertical-align: middle;}
+.confirm {
+    font-size: 15px;
+    color: white;
+    background-color: green;
+    float: right;
+    margin: 2px 3px 2px 0;
+}
+.confirm:active { background-color: green; transform: translateY(4px); }
+.left a {text-decoration: none;}
+.left a:visited{color: black;}
+h2 { font-size: 25px;}
+
+/* ---------------------------progress page ----------*/
+
+.progBG {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    background-size: cover;
+    background-image: url('../images/Cooking.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+/* changed table to progTable */
+.progTable {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.89);
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    color: rgb(0, 0, 0);
+    bottom: 10px;
+    border-style: double;
+    border-width: thick;
+    display: table;
+    width: 90%;
+    vertical-align: middle;
+    overflow: scroll;
+}
+
+/* changed row to progRow */
+.progRow {
+    display: table-row;
+    text-align: center;
+}
+/* changed row to progRow */
+.progRow > div {
+    float: left;
+    width: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(12, 6, 6);
+    border-bottom-width: 0;
+    padding: 5px;
+}
+/* changed row to progRow */
+.progRow:after {
+    content:"";
+    clear: both;
+}
+/* changed top to progTop */
+.progTop {
+    display: table-header-group;
+    background-color: rgb(128, 128, 128);
+    background-color: rgba(128, 128, 128, 0.712);
+    font-weight: bold;
+    font-size: 25px;
+}
+/*changed headers to progHeaders */
+.progHeaders {
+    font-weight: bold;
+    font-size: 6vh;
+    color: white;
+}
+/* changed top to progTop */
+.progTop > div { border-bottom-width: thick; }
+
+/* might fuck something up idk*/
+button { font-size: 25px; }
+button:active { background-color: #DCDCDC; transform: translateY(4px); }
+
+.prepping { color: rgb(189, 125, 6);}
+.inProgress {  color: rgb(133, 124, 4); }
+.done { color: rgb(9, 109, 101); }
+.delivered { color: rgb(21, 92, 21); }
+.cancel { color: white; background-color: rgb(197, 7, 7)}
+.pickup {color: white; background-color: green;}
+
+/* -------------- chef page ---------------*/
+.wrapper{
+    margin: auto;
+    display: grid;
+    text-align: center;
+    height: 100%;
+    width: 100%; 
+}
+body{
+    background-color: #645f5f;
+    margin:0;
+    height: 100%;
+}
+.frame{
+    background-image: url('../images/order3.jpg');
+    text-transform:uppercase;
+    font-size: 10vh;
+    text-shadow: 2px 2px #645f5f;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+.order{
+    border-style: solid;
+    height: 100%;
+}
+.check{
+    background-color: rgb(64, 223, 43);
+    color: white;
+    font-size: 2vw;
+    width: 69%;
+}
+.x{
+    background-color: red;
+    font-weight: bold;
+    font-size: 2vw;
+    width: 29.5%;
+}
+
+/* --------------- bill page -------------*/
+/* changed table to .billTable */
+.billBG{
+    margin:0;
+    height: 100%;
+    overflow-x: hidden;
+    background-image: url('../images/bill.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 59px;
+    font-family: "Lato", sans-serif;
+}
+.billTable{
+    text-align: center;
+    color: white;
+    height: 100%;
+    word-break: break-all;
+    font-size: 2vw;
+}
+/* changed column to .billColumn */
+.billColumn{
+    float: left;
+    border-style: solid;
+    border-width: thin;
+}
+/* changed column to .billRow */
+.billRow1{
+    border-style: solid;
+    border-width: thin;   
+
+}
+.billRow2{
+    border-style: solid;
+    border-width: thin;   
+
+}
+/* changed left to .billLeft */
+.billLeft{
+    width: 50%;
+}
+/* could change every h3 and fuck things up */
+h3{
+    width: 100%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;  
+}
+
+.middle{
+    width: 15%;
+}
+
+.right{
+    width: 35%;
+}
+
+.sub1{
+    height: 33%;
+}
+.sub2{
+    height: 33%;
+}
+.sub3{
+    height: 33%;
+}
+
+.tip{
+    color: rgb(5, 5, 5);
+    background-color: rgb(134, 134, 134);
+    font-family: "Lato", sans-serif;
+    font-size: 2vw;
+}
+
+.cash{
+    font-family: "Lato", sans-serif;
+    font-size: 4vw;
+    color: antiquewhite;
+    background-color: green;
+    width: 99%;
+    height: 50%;
+}
+.card{
+    font-family: "Lato", sans-serif;
+    font-size: 4vw;
+    color: antiquewhite;
+    background-color: rgb(0, 38, 255);
+    width: 99%;
+    height: 50%;
+}
+
+/*row to .billRow*/
+/* Clear floats after the columns */
+.billRow1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.billRow2:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* --------------------- @media stuff ------------------------------*/
+@media (orientation: landscape) {
+    /*main menu*/
+    .homeButt > a{margin-bottom: 3%;}
+    .chatbar > a{width:275px}   
+    /*welcome page*/
+    .welcome{
+        background-image: url('../images/table.jpg');
+    }
+    .message{
+        color: gray;
+        text-shadow: 2px 2px #000000;
+    }
+}
+  
+@media (max-width: 500px) {
+    .chatbar > a{width: 200px;}
+    .homeButt > a {
+      max-width: 20%;
+      font-size: 125%;
+      padding: 15px 30%;
+    }
+  }
+  
+/* from foodmenu.css idk if this will break other pages */
+/** Mobile 
+@media only screen and (max-width: 767px)  {
+    .table { display: none; }
+    .mobile {
+        margin: 60px 0 30px 0;
+        color: rgb(0, 0, 0);
+        bottom: 10px;
+        display: table;
+        width: 100%;
+        vertical-align: middle;
+        overflow: scroll;
+    }    
+    .img {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    .column {
+        width: 98%;
+        height: 225px;
+        margin: 0 5px 5px 5px;
+    }
+
+    .row > .left {
+        background-color: rgb(231, 241, 255);
+        border-style: solid;
+        border-right-width: 2px;
+        width: 100%;
+        height: 100%;
+    }
+
+    p { font-size: 30px;}
+    .headers{font-size:20px;}
+    button{ font-size: 15px;}
+}
+*/
